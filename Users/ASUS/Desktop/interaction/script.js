@@ -1,22 +1,19 @@
 $(document).ready(function () {
 
-    // =========================
-    // THEME TOGGLE
-    // =========================
 
     const savedTheme = localStorage.getItem("theme");
 
-    // LOAD SAVED THEME
+
     if (savedTheme === "dark") {
         $("body").addClass("dark-mode");
     }
 
-    // TOGGLE THEME
+
     $("#theme-toggle").click(function () {
 
         $("body").toggleClass("dark-mode");
 
-        // SAVE THEME
+      
         if ($("body").hasClass("dark-mode")) {
             localStorage.setItem("theme", "dark");
         } else {
@@ -25,21 +22,16 @@ $(document).ready(function () {
 
     });
 
-    // =========================
-    // CART VARIABLES
-    // =========================
+
 
     let shoppingCart = [];
 
-    // =========================
-    // UPDATE CART DISPLAY
-    // =========================
+
 
     function updateCartDisplay() {
 
         $("#cart-container").html("");
 
-        // EMPTY CART
         if (shoppingCart.length === 0) {
 
             $("#cart-container").html(
@@ -48,7 +40,7 @@ $(document).ready(function () {
 
         }
 
-        // SHOW CART ITEMS
+
         $.each(shoppingCart, function (index, item) {
 
             $("#cart-container").append(`
@@ -81,9 +73,7 @@ $(document).ready(function () {
 
         });
 
-        // =========================
-        // CALCULATE TOTALS
-        // =========================
+   
 
         let subtotal = 0;
 
@@ -94,7 +84,7 @@ $(document).ready(function () {
         const tax = subtotal * 0.10;
         const grandTotal = subtotal + tax;
 
-        // UPDATE UI
+ 
         $("#subtotal").text(`$${subtotal.toFixed(2)}`);
 
         $("#tax").text(`$${tax.toFixed(2)}`);
@@ -103,9 +93,6 @@ $(document).ready(function () {
 
     }
 
-    // =========================
-    // ADD TO CART
-    // =========================
 
     $(".add-to-cart-btn").click(function () {
 
@@ -125,9 +112,7 @@ $(document).ready(function () {
 
     });
 
-    // =========================
-    // REMOVE ITEM
-    // =========================
+ 
 
     $(document).on("click", ".remove-btn", function () {
 
@@ -139,9 +124,7 @@ $(document).ready(function () {
 
     });
 
-    // =========================
-    // INITIAL LOAD
-    // =========================
+
 
     updateCartDisplay();
 
